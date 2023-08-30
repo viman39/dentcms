@@ -1,6 +1,7 @@
 import { Header as AntHeader } from "antd/es/layout/layout";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import Login from "../Login/Login";
 
 const antHeaderStyle = {
   padding: 0,
@@ -29,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
           color: "white",
         }}
       />
-      <Button type="primary">Login</Button>
+      <Login />
     </AntHeader>
   );
 };

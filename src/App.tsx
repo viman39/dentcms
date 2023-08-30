@@ -1,20 +1,23 @@
 import Layout from "./components/Layout/Layout";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import { AuthContextProvider } from "./context/UserContext";
 
 function App() {
   return (
-    <Layout>
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </Layout>
+    <AuthContextProvider>
+      <Layout>
+        <Router>
+          <Routes>
+            <Route index path="/" element={<LandingPage />} />
+            <Route path="/create-account" element={<CreateAccount />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </Router>
+      </Layout>
+    </AuthContextProvider>
   );
 }
 
