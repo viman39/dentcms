@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans');
+
+$primary: #00195f;
+$white: #ffffff;
+$off-black: #0e0f11;
+$light-gray: #e6e7e9;
+$medium-gray: #c7cbd1;
+$dark-gray: #666a71;
+$gold: #f1ad3f;
+$silver: #9dafc3;
+$bronze: #ca935b;
+$danger: red;
+
+@mixin grid-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
