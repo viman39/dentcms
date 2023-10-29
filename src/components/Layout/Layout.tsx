@@ -1,28 +1,19 @@
-import React, { useState } from "react";
-import { Layout as LayoutAnt } from "antd";
-import Sidebar from "../Sidebar/Sidebar";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-
-const { Content } = LayoutAnt;
+import React from 'react';
+import Header from '../Header/Header';
+import Footer from '../common/Footer/Footer';
 
 interface LayoutProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [collapsed, setCollapsed] = useState(false);
-
-  return (
-    <LayoutAnt style={{ minHeight: "100vh" }}>
-      <Sidebar collapsed={collapsed}></Sidebar>
-      <LayoutAnt className="site-layout">
-        <Header collapsed={collapsed} setCollapsed={setCollapsed}></Header>
-        <Content style={{ margin: "16px" }}>{children}</Content>
-        <Footer></Footer>
-      </LayoutAnt>
-    </LayoutAnt>
-  );
+    return (
+        <div className="app-layout">
+            <Header />
+            <div className="app-body">{children}</div>
+            <Footer />
+        </div>
+    );
 };
 
 export default Layout;

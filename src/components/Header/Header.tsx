@@ -1,38 +1,16 @@
-import { Header as AntHeader } from "antd/es/layout/layout";
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import Login from "../Login/Login";
+import { mockUser } from '../../__mocks__/userMock';
+import { useAuthContext } from '../../context/UserContext';
+import { Button } from '../common/Button/Button';
 
-const antHeaderStyle = {
-  padding: 0,
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
+const Header: React.FC = () => {
+    const { user, setUser } = useAuthContext();
 
-interface HeaderProps {
-  collapsed: boolean;
-  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
-  const toggleSidebar = () => {
-    setCollapsed((oldCollapsed) => !oldCollapsed);
-  };
-
-  return (
-    <AntHeader style={antHeaderStyle}>
-      <Button
-        type="text"
-        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        onClick={() => setCollapsed(!collapsed)}
-        style={{
-          color: "white",
-        }}
-      />
-      <Login />
-    </AntHeader>
-  );
+    return (
+        <header className="app-header">
+            {!user && <Button onClick={() => setUser(mockUser)}>Login</Button>}
+            {user && <Button onClick={() => setUser(null)}>Logout</Button>}
+        </header>
+    );
 };
 
 export default Header;
