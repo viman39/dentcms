@@ -6,13 +6,17 @@ import { useAuthContext } from './context/UserContext';
 
 export const Router = () => {
     const { user } = useAuthContext();
-    console.log(user);
+
     return (
         <BrowserRouter>
             <Routes>
-                <Route index path="/" element={<LandingPage />} />
-                <Route path="/create-account" element={<CreateAccount />} />
-                <Route path="/dashboard" element={<Dashboard />} />
+                {!user && (
+                    <>
+                        <Route index path="/" element={<LandingPage />} />
+                        <Route path="/create-account" element={<CreateAccount />} />
+                    </>
+                )}
+                {user && <Route index path="/" element={<Dashboard />} />}
             </Routes>
         </BrowserRouter>
     );

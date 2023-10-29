@@ -1,16 +1,20 @@
-import { Router } from "./Router";
-import Layout from "./components/Layout/Layout";
+import { User } from './App.types';
+import { Router } from './Router';
+import Layout from './components/Layout/Layout';
 
-import { AuthContextProvider } from "./context/UserContext";
+import { AuthContextProvider } from './context/UserContext';
 
 function App() {
-  return (
-    <AuthContextProvider>
-      <Layout>
-        <Router />
-      </Layout>
-    </AuthContextProvider>
-  );
+    const localUserData = localStorage.getItem('userData');
+    const userData: User = localUserData ? JSON.parse(localUserData) : null;
+
+    return (
+        <AuthContextProvider userData={userData}>
+            <Layout>
+                <Router />
+            </Layout>
+        </AuthContextProvider>
+    );
 }
 
 export default App;
