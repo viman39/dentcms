@@ -1,19 +1,7 @@
 import { useState, createContext, useContext } from 'react';
-import { User } from '../App.types';
+import { AuthContextProviderProps, AuthenticationContext, User } from './user.types';
 
-interface AuthContextProviderProps {
-    children: React.ReactNode;
-    userData: User;
-}
-
-interface AuthContext {
-    user: User | null;
-    loginUser: (x: User) => void;
-    logoutUser: () => void;
-    isLoggedIn: boolean;
-}
-
-export const AuthContext = createContext<AuthContext | null>(null);
+export const AuthContext = createContext<AuthenticationContext | null>(null);
 
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     userData,

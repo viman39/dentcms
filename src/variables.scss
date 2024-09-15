@@ -3,7 +3,7 @@
 $primary: #00195f;
 $white: #ffffff;
 $off-black: #0e0f11;
-$light-gray: #e6e7e9;
+$light-gray: #f2f2f2;
 $medium-gray: #c7cbd1;
 $dark-gray: #666a71;
 $gold: #f1ad3f;
@@ -13,7 +13,7 @@ $danger: red;
 
 @mixin grid-layout {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, [col-start] 1fr);
     gap: 20px;
 }
 

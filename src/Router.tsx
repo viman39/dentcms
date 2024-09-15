@@ -1,23 +1,25 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LandingPage from './pages/LandingPage/LandingPage';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import Dashboard from './pages/Dashboard/Dashboard';
-import CreateAccount from './pages/CreateAccount/CreateAccount';
-import { useAuthContext } from './context/UserContext';
+import { PublicProfile } from './pages/PublicProfile/PublicProfile';
+import Layout from './components/Layout/Layout';
 
-export const Router = () => {
-    const { user } = useAuthContext();
-
-    return (
-        <BrowserRouter>
-            <Routes>
-                {!user && (
-                    <>
-                        <Route index path="/" element={<LandingPage />} />
-                        <Route path="/create-account" element={<CreateAccount />} />
-                    </>
-                )}
-                {user && <Route index path="/" element={<Dashboard />} />}
-            </Routes>
-        </BrowserRouter>
-    );
-};
+export const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Layout />,
+        children: [
+            {
+                path: '/',
+                element: <Dashboard />,
+            },
+            {
+                path: ':username',
+                element: <PublicProfile />,
+            },
+            {
+                path: '*',
+                element: <Navigate to="/" replace={true} />,
+            },
+        ],
+    },
+]);
