@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    h3 {
+        font-size: 2em;
+        font-weight: lighter;
+    }
+
+    .profile-title {
+        display: flex;
+        justify-content: center;
+    }
+}
